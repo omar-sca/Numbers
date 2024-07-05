@@ -1,0 +1,20 @@
+.list-group-item{
+    background-color: #e7f1ff50
+}
+
+.title-banner{
+    background-color: #e7f1ff;
+    
+}
+
+.spinner-border{
+    color: #88b9ff;
+}
+
+.list-group-horizontal>.list-group-item+.list-group-item{
+    border-left-width: 1px
+}
+
+.logo{
+    width:1.5em
+}
