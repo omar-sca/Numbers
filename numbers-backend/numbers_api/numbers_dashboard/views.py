@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import require_GET
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from rest_framework.renderers import JSONRenderer
 from numbers_api.serializers import NumberMSerializer
 from numbers_dashboard.models import NumberM
@@ -18,8 +18,10 @@ def dashboard(request):
     return JsonResponse({"data":serializer.data}, safe=False)
 
 
-def edit(request):
-    #queryset=NumberM.objects.all(enable=True)
-    #serializer_class=serializers.NumberMSerializer
-    return HttpResponse("Return desde aplicacion dashboard - view edit")
-# TO_DO: ABM de NumberKind
+class NumberMViewSet(viewsets.ModelViewSet):
+    queryset=NumberM.objects.all()
+    serializer_class=NumberMSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+# TO_DO: Permisos en viewset
+
+# TO_DO: Login para ABM de NumberKind
